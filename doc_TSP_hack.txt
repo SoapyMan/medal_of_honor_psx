@@ -1,0 +1,109 @@
+
+\DATA\MSN1\LVL1\TSP0\1_1_C1.TSP
+
+first TAF contains 254 textures
+
+base: 2
+selstart: 1000
+selend:
+
+--- sequential structure -----------
+
+vertex data
+ range ? - 29600
+
+normal data (spherical dots)
+ range 29600 - 32600
+
+index data (straight dotted lines along XYZ axii)
+ range 32600 - EOF
+
+
+####################################################
+
+
+--- pattern changes -------------------------------------
+
+@448
+every other 14 bytes an index?
+
+@1804
+every 8 bytes?
+
+@4144 (end vertex data?)
+
+
+--- materials/textures ----------------------------------
+
+\12_7_C2_sm.TSP
+ smallest TSP file
+
+ associated TAF file has about 135 textures (YU_RI)
+ the second TAF file seems identical to the first one
+
+--- remaining issues ------------------------------------
+
+faces remaining bytes/bits:
+ index to texture/material (see TMD references)???
+ or even collision detection data/flags???
+ or visibility culling flags
+
+normal data (spherical dots)
+ range:   2067 - 2475 (408 dots)
+ address: 4144 - 4960 (816 bytes)
+
+ are there even normals at all???
+  unlikely that remaining bytes left in face struct are normal indices
+  perhaps normals are per vertex (i.e. normalnum == vertnum), unlikely
+  might need some per-triangle normals for collision detection:
+   let's see if it is interleaved with other collision data
+   data seems to support this: few downward facing vectors!
+
+-----------------------------------------------------
+
+File Blocks
+   0 - 64    (  64 bytes)            header
+  64 - 460   ( 396 bytes)  [13][ *]  ?
+ 460 - 1804  (1344 bytes)  [84][16]  face data
+1804 - 2564  ( 760 bytes)  [95][ 8]  vertex data
+2564 - 2564  (   0 bytes)  [ 0][ ?]  ?
+2564 - 2944  ( 380 bytes)  [95][ 4]  per vertex ??? data
+2944 - 2944  (   0 bytes)  [ 0][ ?]  ?
+2944 - 6060  (3116 bytes)  [ 0][ *]  ?
+
+--- unidentified blocks -----------------------------------------------------------------------
+
+A block
+ no idea, but seems to be present on all levels
+
+C block
+ no level seems to use this block
+
+--- A block ---------------------------------------------------------------------------------
+
+seems to be 30/36 bytes interval
+
+--- D block ---------------------------------------------------------------------------------
+
+some single player levels have them
+no multiplayer levels have D blocks
+
+i think it may have to do with interactive stuff:
+ like doors
+ perhaps trigger data for breaking glass (2 on 1_1, 4 on 1_2???)
+ but size of blocks varies, so not sure
+
+1_1_C1.tsp
+ 400 bytes of data (assuming unknown offset pointer is ok)
+ split in two 200 byte sections (Dnum == 2)
+ last 160 bytes are identical
+ 
+ frequent power of two numbers
+ some number occur many times
+ D blocks of single TSP are mostly identical
+ somewhat remniscent of uv data
+ some increasing sequences, with odd bytes out of order (seems like human generated geometry)
+ perhaps animated tspfaces???
+
+
+// END OF FILE

@@ -1,0 +1,17 @@
+faceoffset: 9548
+
+poly: 603
+offset: 9648
+
+abs: 19196
+
+----------
+poly: 0
+
+tex index (-1):
+ 35 YEAH
+ 36
+129
+131
+132
+136

@@ -1,0 +1,32 @@
+
+TSP		b7		TAFNUM
+----------------------------------------
+1_1_C1.TSP	8-185		254
+1_1_C3.TSP	8-214		254
+
+12_7_C1.TSP	8-200		135
+12_7_C2.TSP	8-25		135
+
+
+
+
+--- b7+b8 interpretation as uint16 ------------------
+
+FACEID	STEP	TIMADDR
+1698	64	55296
+1762	--	57408
+
+--- b7 interpretation as byte -----------------------
+
+FACEID	STEP	TIMADDR
+162	64	55296
+226	--	57408
+
+--- mapping attempt ---------------------------------
+
+12	35	(hedgerow 1)
+13	36	(hedgerow 2)
+?	38	(picket fence)
+185?	140	(house window)
+?	141	(house window broken)
+?	194	(house door)

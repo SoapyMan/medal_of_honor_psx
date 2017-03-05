@@ -1,0 +1,17 @@
+SP levels with D block.
+
+LEVEL:		DNUM:	SIZE:
+1_1_C1.TSP	2	400
+1_2_C1.TSP	4	448
+1_2_C5.TSP	4	404
+1_3_C4.TSP	1	200
+2_1_C1.TSP	13	2444
+2_1_C2.TSP	10	2016
+2_1_C4.TSP	5	1088
+2_1_C5.TSP	12	2832
+2_1_C6.TSP	8	1656
+2_2_C1.TSP	5	800
+Stopped checking here.
+
+
+No MP level has D block.

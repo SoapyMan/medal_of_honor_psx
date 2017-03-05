@@ -1,0 +1,123 @@
+
+VAB are essentially containers for VAG files
+VAG is a Sony sound format
+VABs can be loaded directly into SPU (sound processing unit?)
+
+ADPCM compressed
+4-bit?
+
+11025 Hz (psxsnd.exe)
+22050 Hz
+
+---------
+
+http://www.darklock.com/thps/hacking.html
+
+VAB files are PlayStation sound source data, literally archives containing VAG format sound data, which in turn is a compressed raw sound format unique to the PlayStation. Utilities are available here which will extract the VAG files from the VAB archives, and (using information determined from THPS specifically) convert VAG files to WAV. The documentation on both utilities is sparse, but they work reasonably simply; just use "VAB2VAG (file)" to extract and then "UNVAG (file)" for each resulting VAG to do the conversion. These two utilities are the product of the PSX development community more than me (I only did the PCM->WAV conversion of the UNVAG program's output), as I haven't done too well at writing a working VAB/VAG/WAV converter just yet. 
+
+
+--- hex analysis ---------------------------------
+
+Structure changes:
+
+@0     header
+@32    table start (2048 bytes) (8 bytes per entry?)
+@2080  some variables (16 bytes)
+@2096  table start (512 bytes) (2 bytes per entry?)
+
+@2608  start of VAG ()
+@4528  start of VAG ()
+@5984  start of VAG ()
+@7888  start of VAG ()
+@7904  start of VAG ()
+@11520 start of VAG ()
+@14288 start of VAG ()
+
+
+
+--- VAG info (2608 and beyond) ------------------------
+
+
+Looping vags
+
+I was browsing the mailing list for stuff to put here, and I came across a mail of Silpheed:
+
+The vagpack tool from bITmASTER doesn't have an option to create
+looping samples, but the vag-file i used to experiment with was a
+looping one...
+So the next question is: where is the loop information stored in the vag-file ?
+
+
+OK, take a look at a vag file in a hex editor. You will see the data
+(after the 48 byte header) is arranged into 16 byte sections. There are
+2 header bytes, followed by 14 compressed bytes of sound data. The
+second header byte is the interesting one as far as looping is
+concerned. In a non looping sample, the sections will be like this:
+
+XX 00 XX XX XX XX XX XX XX XX XX XX XX XX XX XX
+
+The second header byte is always set to 0. (except for the very last two
+16 byte blocks of a non-looping sample (see below).)
+
+For a looping sample, you can really only set the loop starting point -
+the end of the loop can only be at the end of the sample. You set the
+two points by setting the appropriate bits in the second header byte of
+the 16 byte section you want them to be in. Like this:
+
+Start of loop:
+XX 06 XX XX XX XX XX XX XX XX XX XX XX XX XX XX
+
+End of loop (also the last 16 bytes of the sample):
+XX 03 XX XX XX XX XX XX XX XX XX XX XX XX XX XX
+
+(BTW, the second header byte of the second last 16 byte section of a
+non-looping sample will be set to 01 instead of 03. This is then
+followed by a 16 byte SPU irq clear block, which looks like this:
+
+00 07 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+
+I hope all that makes sense :)
+
+As you can see, you can only set loop points at the 16 byte block level,
+you cannot be more accurate than that. (Actually its worse than that,
+because each 16 byte block corresponds to 28 bytes of the original
+uncompressed sample data).
+This is a problem with my mod player, as quite a few mods use very short
+looped samples. As an extreme example of the problem, suppose one of the
+samples in a mod is only 16 bytes long. This will be compressed into one
+16 byte block of psx sample data. Since the original sample is so short,
+it will probably only take up just over half the 16 byte block. This
+leaves a large portion of the block left as zero bytes, and when played
+back on the psx it will sound quite bad as the psx plays the original 16
+byte sample plus the extra zero bytes which make up a significant
+percentage of the total. For a long sample, an extra few zero bytes at
+the end wont be noticable, but it has quite a bad effect on a sample
+where the zero bytes make up a larger percentage of the total sample.
+
+Anyway, I hope all that helps you... (it turned out quite a bit longer
+than I intended :) ).
+
+Later,
+Silpheed.
+
+--- level VABS ---------------------------------------------------------
+
+always 4 VABs???
+
+1_10.TAF
+ vab 1:
+  effects, gun, powerups, breaking glass, body drop, enemy death
+  effects at 22050 Hz
+  voice at 11025 Hz
+  lots of empty samples, PSXSND issue or empty VAG slots???
+ vab 2:
+  much like vab 1
+ vab 3:
+  like vab 1,2
+ vab 4:
+  like 1,2,3
+  lots of voices, few effects
+  mostly 11025 Hz (voices)
+
+
+--- EOF -------------------------

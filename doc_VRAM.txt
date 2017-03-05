@@ -1,0 +1,11 @@
+
+--- VRAM pages ------------------------------
+
+	512x256	front buffer
+	512x256	back buffer
+	256x64	palettes
+	256x192	
+	256x256
+	256x256
+	256x256
+

@@ -1,0 +1,79 @@
+Technical specifications
+
+Central processing unit
+
+MIPS R3000A-compatible (R3051) 32bit RISC chip running at 33.8688 MHz
+
+The chip is manufactured by LSI Logic Corp. with technology licensed from SGI. The chip also contains the Geometry Transformation Engine and the Data Decompression Engine.
+
+Features:
+
+    * Operating Performance of 30 MIPS
+    * Bus Bandwidth 132 MB/s
+    * Instruction Cache 4 KB
+    * Data Cache 1 KB (non associative, just 1024 bytes of mapped fast SRAM)
+
+Geometry transformation engine
+
+This engine is inside the main CPU chip. It gives it additional (vector-)math instructions used for the 3D graphics.
+
+Features:
+
+    * Operating performance of 66 MIPS
+    * 360,000 flat-shaded polygons per second
+    * 180,000 texture mapped and light-sourced polygons per second
+
+Sony originally gave the polygon count as:
+
+    * 1.5 million flat-shaded polygons per second;
+    * 500,000 texture mapped and light-sourced polygons per second.
+
+These figures were given as a ballpark figure for performance under optimal circumstances, and so are unrealistic under normal usage.
+
+Data decompression engine
+
+This engine is also inside the main CPU. It is responsible for decompressing images and video. Documented device mode is to read three RLE-encoded 16×16 macroblocks, run IDCT and assemble a single 16×16 RGB macroblock. Output data may be transferred directly to GPU via DMA. It is possible to overwrite IDCT matrix and some additional parameters, however MDEC internal instruction set was never documented.
+
+Features:
+
+    * Compatible with MJPEG and H.261 files
+    * Operating Performance of 80 MIPS
+    * Directly connected to CPU Bus
+
+Graphics processing unit
+
+This chip is separate to the CPU and handles all the 2D graphics processing, which includes the transformed 3D polygons.
+
+Features:
+
+    * Maximum of 16.7 million colors
+    * Resolutions from 256×224 to 640×480
+    * Adjustable frame buffer
+    * Unlimited color lookup tables
+    * Maximum of 24-bit color depth
+    * Maximum of 4000 8×8 pixel sprites with individual scaling and rotation
+    * Emulation of simultaneous backgrounds (for parallax scrolling)
+    * Flat or Gouraud shading, and texture mapping
+
+Sound processing unit
+
+Features:
+
+    * Can handle ADPCM sources with up to 24 channels and up to 44.1 kHz sampling rate
+
+Memory
+
+    * Main RAM: 2 MB
+    * Video RAM: 1 MB
+    * Sound RAM: 512 KB
+    * CD-ROM Buffer: 32 KB
+    * Operating System ROM: 512 KB
+    * PlayStation Memory Cards have 128 KB of space in an EEPROM
+
+CD-ROM drive
+
+Features:
+
+    * Double Speed, with a maximum data throughput of 300 kB/s
+    * XA Mode 2 Compliant
+    * CD-DA (CD-Digital Audio)

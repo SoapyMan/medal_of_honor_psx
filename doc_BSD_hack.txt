@@ -1,0 +1,105 @@
+
+File size
+ multiplayer (MSN12) levels have the smallest BSD files (36kb to 43kb)
+ multiplayer characters are next biggest
+ multiplayer weapon sets are next biggest
+ single player levels are the biggest
+
+MP and SP, character and weapons levels may have different BSD versions
+
+TMD format description is probably a good reference (like it was for TSP)
+
+--- hex analysis -------------------------------------------------------------------------------------
+
+file: 12_2.BSD
+size: 36384 bytes
+
+overall:
+ very clear structure (interval, variable size)
+ should be easy to see if normal data is interleaved or indexed
+
+Structure changes:
+
+@0     (2048 bytes)  series of uint32 size/offset values (num_used: 32, rest is zero)
+@2048  ( 128 bytes)  level file path "data\msn12\lvl2\tsp0\12_2_c"
+@2176  (7204 bytes)  some sort of memory block
+
+@9380  ( 508 bytes)  ???
+@9908  (  16 bytes)  looks like a block header
+@9924  (??        )  8 byte stride???
+@17824               ???
+@18872               looks like indices
+@19632               8 byte stride???
+@19904               4 byte stride???
+@20048               clear structure
+@21072               ???
+@21312 (80 bytes???) ???
+@21392
+@342228
+
+--- 3d analysis -------------------------------------------------------------------------------------
+
+12_2.BSD
+ base: 0
+ stride: 4
+
+ 16500 - 16604 (26 verts)
+
+sphere mesh:
+ 26 verts
+ 48 faces / 
+
+
+10776 - 17816  ( 280 bytes)  player spawns  (280 / 56 = 5 spawns)
+11056 - 17816  (6760 bytes)  weapon spawns  (6760 / 104 = 65 spawns)
+60 bytes of zeroes follow, padding?
+
+@12216  spawnpoint
+@13152  spawnpoint
+
+
+@32612 24
+@32614 0
+ 32616 - 33000 (384 bytes)  ???         (384 = 24 * 16 bytes)  no geometric data (perhaps indices??)
+ 33000 - 33208 (208 bytes)  vertices    (208 = 26 * 8 bytes)   SMALL SPHERE
+ 33208 - 33416 (208 bytes)  vertices    (208 = 26 * 8 bytes)   BIG SPHERE
+ 33416 - 33520 (104 bytes)  ???         (104 = 26 * 4 bytes)   no geometric data
+
+@33520 48
+@33522 0
+ 33524 - 33714 (190 bytes)  ???
+
+@33716 18
+@33718 0
+ 33720 - 34228 (508 bytes)  vertices    V2 attachment?? (no 8 byte verts???)
+ 34228 - 34484 (256 bytes)  ???
+
+@34484 44
+@34486 0
+ 34488 - 35192 (704 bytes)  ???         (704 = 44 * 16 bytes)
+ 35192 - 35264 ( 72 bytes)  ???         (72 / 4 = 18)
+ 35264 - 35408 (160 bytes)  vertices    (160 = 20 * 8 bytes)  BOX
+ 35408 - 35504 ( 80 bytes)  ???
+ 35504 - 35664 (160 bytes)  ???
+
+--------------------------------
+
+Color palettes???
+Lookup table???
+
+12_2.BSD
+@9384
+ 524 bytes
+@9908
+
+12_4.BSD
+@9384
+ 1496 bytes
+@10880
+
+
+--- FIRST NODES -------------------
+
+12_2.BSD	10508
+12_5.BSD	
+

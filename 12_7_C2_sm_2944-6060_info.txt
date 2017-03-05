@@ -1,0 +1,69 @@
+TSP so far has:
+Anum:         13
+facenum:      84
+vertnum:      95
+
+
+--- 3d analysis -------------------------------------------
+
+base: 2
+stride: 4
+
+   0 - 250   (250 bytes) seems to be indices
+ 254 - 598   (348 bytes) 87 vertices
+ 598 - 1006  (408 bytes) normal data (102?)
+1006 - 3116  (??? bytes) seems to be 16-bit colors???
+
+
+--- hex analysis ------------------------------------------
+
+Structure changes:
+
+@144  (index data???)
+@508  (vertex data starts here)
+@1200 (normal data starts here)
+@2384 (???)
+
+--- structure ----------------------------------------------
+
+   0 - 138  (138 bytes) ??? / 2 = 69
+ 138 - 508  (370 bytes) index data??
+ 508 - 1196 (688 bytes) 86 vertices
+1196 - 2032 (832 bytes) / 8 bytes = 104 normals
+2032 - 3116 (1084 bytes) face index data??
+
+-------- normals -------------------------------------------
+
+4 byte size, 0 byte interval
+then must be indexed from faces
+ makes sense, many are the identical
+
+------------------------------------------------------------
+
+ 15 G           ( 15)
+184 H           (185)
+ 87 vertices    ( 86)
+104 normals     (105)
+108 faces       (108)
+
+   0 - 18   (18 bytes) header
+  18 - 138  (120 bytes) some sort of table
+ 138 - 508  (368 bytes) a face index array
+ 508 - 1204 (696 bytes) vertex data
+1204 - 2036 (832 bytes) normal data
+2036 - 3116 (1080 bytes) face data
+
+Header:
+@0  ??? (64344)
+@2  ??? (60186)
+@4  ??? (769)
+@6  ??? (63326)
+@8  ??? (15)
+@10 ??? (185)
+@12 vertnum+1
+@14 normalnum+1
+@16 facenum
+@18 ??? (1)
+@20 ??? (65527)
+@22 ??? (2060)
+@24 start table?

@@ -1,0 +1,75 @@
+--- MOH HACK ------------------------------------------------
+
+TIM	texture images
+RSC	resource files
+SST	menu scripts
+VAB	audio resource file
+
+GFX	seems to contain animation data (shell characters)
+TSP	level data (vertices)
+
+BSD	player/enemy/movable geometry and animation data?
+VB	seems to be audio data, looks much like VAG segments
+
+--- levels --------------------------------------------------
+
+MSN12 are probably the multiplayer levels
+
+all single player levels have VB files, but also multiplayer level 5
+
+--- audio ---------------------------------------------------
+
+music from CD tracks
+VABs contain ingame sounds
+
+### snip
+
+In Resident Evil 1 (Director's) there are quite a few different files including:
+.VB which are PCM RAW files
+.HSB which apparently are 'VAB' files - they have the header of 'pBAV' - which is presumably VAB reversed. These are some sort of samples.
+
+In Resident Evil 2, there are BGM files which I though would include music, but BGM2WAV doesn't work.
+.BGM files have header of 'pQES' - which is presumably SEQ reversed.
+
+In Resident Evil 3 Nemesis, there are again BGM files, but this time they are tiny. They appear to be some kind of custom MIDI or Sequence file, as there are many samples (pianos, strings etc.) in the VB RAW PCM format.
+
+### end snip
+
+--- TSP -----------------------------------------------------
+
+\DATA\MSN1\LVL1\TSP0\1_1_C1.TSP
+base: 2
+stride: 0,try other
+house on square
+
+\DATA\MSN1\LVL1\TSP0\1_1_C3.TSP
+base: 0
+stride: 0,try other
+hallway?
+
+\DATA\MSN1\LVL1\TSP0\1_1_C6.TSP
+base: 2
+stride: 0,try other
+staircase?
+
+\DATA\MSN1\LVL3\TSP0\1_3_C2.TSP
+base: 2
+stride: 4
+sewer, pipes, sloped tunnels
+
+\DATA\MSN1\LVL2\TSP0\1_2_C9.TSP
+base: 0
+stride: 4
+excelent isolated straight walls
+
+\DATA\MSN1\LVL2\TSP0\1_2_C8.TSP
+base: 0
+stride: 4
+excelent isolated curved walls
+
+\DATA\MSN1\LVL2\TSP0\1_2_C10.TSP
+base: 0
+stride: 4
+excelent isolated tiger tank
+selstart 20,000
+selend   27,000

@@ -1,0 +1,32 @@
+
+
+must either be stored in byte u1 or u3 (see first 4 faces)
+transparancy is probably stored in u4 (see window)
+alphatest + other bits perhaps stored in u1?
+
+u1 and u2 could be uint16
+u3 and u4 could be uint16
+
+
+U_SHORT CBA (CLUT position)
+ bit	0-5	upper 6 bits of 10 bits VRAM CLUT X coordinate
+ bit	6-14	9 bits VRAM CLUT Y coordinate
+ bit 	15	unused
+
+U_SHORT TSB (texture info)
+ bit	0-4	texture page number
+ bit	5-6	ABR (semitransparency method)
+ bit	7-8	TPF (colour mode of the texture)
+ bit	9-15	unused
+
+ABR values (transparancy mode)
+ 0	50%  framebuffer + 50%  polygon
+ 1	100% framebuffer + 100% polygon
+ 2	100% framebuffer - 100% polygon
+ 3	100% framebuffer + 25%  polygon
+
+TPF values (texture format)
+ 0	4 bit texture and CLUT
+ 1	8 bit texture and CLUT
+ 2	15 bit texture with no CLUT
+

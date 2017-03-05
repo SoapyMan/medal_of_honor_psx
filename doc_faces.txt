@@ -1,0 +1,15 @@
+
+FACE:	PAGE:	DESCR:
+0	13	foliage (tim 35)
+1	13	foliage (tim 25)
+2		foliade (tim 36)
+3		foliage (tim 36)
+
+126		sand (tim ?)
+520		mansion roof (tim 26?)
+
+606		picket fence (tim 38)
+
+753		foliage (tim ?)
+
+885		window (tim 140)

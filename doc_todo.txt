@@ -1,0 +1,6 @@
+
+* identify TSP D block
+* TAF pBAV handling
+* figure out TSP face CLUT flag data?
+* BSD mesh blocks
+* remaining BSD data

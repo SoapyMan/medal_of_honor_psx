@@ -1,0 +1,95 @@
+BSD PART 2 STARTS AT: 17816
+
+
+20  (uint32)  @19636  (   4 bytes)
+34  vertices  @19640  ( 272 bytes)
+34  m??       @19912  ( 136 bytes)
+64  (uint32)  @20048  (   4 bytes)
+64  faces???  @20052  (1024 bytes)
+18  m??       @21076  (  72 bytes)
+20  ??        @21148  ( 160 bytes)
+??????
+...
+
+Bazooka rocket @see XLS
+ faces?: 24 (384 bytes)
+ verts: 19 (152 bytes)
+
+Medpack
+35740
+
+--- ALL PT2 VERTEX BLOCKS ------------
+
+1	19640	19911	(272 bytes) 34 verts	rifle
+2	21148	21308	(160 bytes) 20 verts	flat plane (thompson?)
+3	22576	22704	(128 bytes) 16 verts	BAR
+4	23236	23348	(112 bytes) 14 verts	bazooka
+5	23782		(152 bytes) 19 verts
+6	24640		(104 bytes) 13 verts
+7	25152		(128 bytes) 16 verts
+8	25796		(360 bytes) 45 verts
+9	27788		(120 bytes) 15 verts
+10	28388		(104 bytes) 13 verts
+11	28944 		(128 bytes) 16 verts
+12	29660		(128 bytes) 16 verts
+13	30348		(112 bytes) 14 verts
+14	30904		(176 bytes) 22 verts
+15	31668		(152 bytes) 19 verts
+16	32444		(112 bytes) 14 verts
+17	33716	34228	(512 bytes) 64 verts	canteen
+18	35264	35424	(160 bytes) 20 verts	health box
+19	35740	35948	(208 bytes) 26 verts	medpack?
+
+--------------------
+
+
+
+MESH 13	@30348
+112	14 vertices
+56	? (stride 4)
+4	facenum (24)
+384	faces
+
+MESH 14	@30904
+176	22 vertices
+88	? (stride 4)
+4	facenum (31)
+496	faces?
+
+MESH 15	@31668
+152	19 vertices
+76	? (stride 4)
+4	facenum (34)
+544	faces?
+
+MESH 16	@32444
+112	14 vertices
+56	RGBA?
+4	facenum (24)
+384	faces?
+208	? (stride 8)
+208	? (stride 8)
+104	? (stride 4)
+4	num (48)
+192	? (stride 4)
+
+MESH 17	@33716
+512	64 vertices
+256	RGBA?
+4	facenum (44)
+704	faces?
+72	?
+
+MESH 18	@35264
+160	20 vertices
+80	RGBA?
+4	facenum (10)
+160	faces?
+72	?
+
+MESH 19	@33716
+208	26 vertices
+104	RGBA?
+4	facenum (16)
+256	faces?
+72	?
